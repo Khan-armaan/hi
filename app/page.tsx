@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import confetti from 'canvas-confetti';
+import { motion, useScroll, useTransform } from "framer-motion";
+import confetti from "canvas-confetti";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
-  
+
   // Enhanced parallax transformations with even more layers
-  const layer1Y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const layer2Y = useTransform(scrollYProgress, [0, 1], ['0%', '45%']);
-  const layer3Y = useTransform(scrollYProgress, [0, 1], ['0%', '60%']);
-  const layer4Y = useTransform(scrollYProgress, [0, 1], ['0%', '75%']);
-  const layer5Y = useTransform(scrollYProgress, [0, 1], ['0%', '90%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const layer1Y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const layer2Y = useTransform(scrollYProgress, [0, 1], ["0%", "45%"]);
+  const layer3Y = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
+  const layer4Y = useTransform(scrollYProgress, [0, 1], ["0%", "75%"]);
+  const layer5Y = useTransform(scrollYProgress, [0, 1], ["0%", "90%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
   const rotation = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
@@ -31,7 +31,7 @@ export default function Home() {
       ticks: 50,
       gravity: 0.4,
       decay: 0.94,
-      colors: ['#FFD700', '#FFA500', '#FF69B4', '#87CEEB', '#DDA0DD']
+      colors: ["#FFD700", "#FFA500", "#FF69B4", "#87CEEB", "#DDA0DD"],
     });
 
     confetti({
@@ -43,36 +43,36 @@ export default function Home() {
       ticks: 40,
       gravity: 0.3,
       decay: 0.92,
-      colors: ['#FFB7C5', '#FFD1DC', '#E6E6FA', '#B0E0E6']
+      colors: ["#FFB7C5", "#FFD1DC", "#E6E6FA", "#B0E0E6"],
     });
   };
 
   const throwFlowers = () => {
     const end = Date.now() + 3000; // 3 seconds
 
-    const colors = ['#ffb7c5', '#ffd1dc', '#ffe4e1', '#f8c8dc'];
-    
+    const colors = ["#ffb7c5", "#ffd1dc", "#ffe4e1", "#f8c8dc"];
+
     (function frame() {
       confetti({
         particleCount: 2,
         angle: 60,
         spread: 55,
         origin: { x: 0 },
-        colors: colors
+        colors: colors,
       });
-      
+
       confetti({
         particleCount: 2,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
-        colors: colors
+        colors: colors,
       });
 
       if (Date.now() < end) {
         requestAnimationFrame(frame);
       }
-    }());
+    })();
   };
 
   const throwStars = () => {
@@ -82,8 +82,8 @@ export default function Home() {
       gravity: 0,
       decay: 0.94,
       startVelocity: 30,
-      shapes: ['star'],
-      colors: ['#FFD700', '#FFF8DC', '#FFFACD', '#FFE4B5']
+      shapes: ["star"],
+      colors: ["#FFD700", "#FFF8DC", "#FFFACD", "#FFE4B5"],
     };
 
     function shoot() {
@@ -91,14 +91,14 @@ export default function Home() {
         ...defaults,
         particleCount: 40,
         scalar: 1.2,
-        shapes: ['star']
+        shapes: ["star"],
       });
 
       confetti({
         ...defaults,
         particleCount: 10,
         scalar: 0.75,
-        shapes: ['circle']
+        shapes: ["circle"],
       });
     }
 
@@ -118,29 +118,29 @@ export default function Home() {
         ticks: 200,
         origin: {
           x: Math.random(),
-          y: Math.random() - 0.2
+          y: Math.random() - 0.2,
         },
-        colors: ['#ff0000', '#ff69b4', '#ff1493'],
-        shapes: ['heart'],
+        colors: ["#ff0000", "#ff69b4", "#ff1493"],
+        // shapes: ['heart'],
         gravity: 0.5,
         scalar: 2,
-        drift: 0
+        drift: 0,
       });
 
       if (Date.now() < end) {
         requestAnimationFrame(frame);
       }
-    }());
+    })();
   };
 
   const throwGlitter = () => {
     const count = 200;
     const defaults = {
       origin: { y: 0.7 },
-      zIndex: 999
+      zIndex: 999,
     };
 
-    function fire(particleRatio: number, opts: any) {
+    function fire(particleRatio: number, opts: confetti.Options) {
       confetti({
         ...defaults,
         ...opts,
@@ -151,39 +151,39 @@ export default function Home() {
     fire(0.25, {
       spread: 26,
       startVelocity: 55,
-      colors: ['#ff69b4', '#ff1493', '#da70d6']
+      colors: ["#ff69b4", "#ff1493", "#da70d6"],
     });
     fire(0.2, {
       spread: 60,
-      colors: ['#00ffff', '#87ceeb', '#1e90ff']
+      colors: ["#00ffff", "#87ceeb", "#1e90ff"],
     });
     fire(0.35, {
       spread: 100,
       decay: 0.91,
       scalar: 0.8,
-      colors: ['#ffd700', '#ffa500', '#ff69b4']
+      colors: ["#ffd700", "#ffa500", "#ff69b4"],
     });
     fire(0.1, {
       spread: 120,
       startVelocity: 25,
       decay: 0.92,
       scalar: 1.2,
-      colors: ['#ff69b4', '#da70d6', '#ff1493']
+      colors: ["#ff69b4", "#da70d6", "#ff1493"],
     });
     fire(0.1, {
       spread: 120,
       startVelocity: 45,
-      colors: ['#87ceeb', '#00ffff', '#1e90ff']
+      colors: ["#87ceeb", "#00ffff", "#1e90ff"],
     });
   };
 
   return (
-    <main 
+    <main
       className="min-h-screen bg-gradient-to-b from-pink-100 to-purple-100 relative"
       onClick={handleSparkleClick}
     >
       {/* Beautiful Parallax Birds Layer */}
-      <motion.div 
+      <motion.div
         className="fixed inset-0 pointer-events-none"
         style={{ y: layer1Y }}
       >
@@ -198,7 +198,7 @@ export default function Home() {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           <path
@@ -218,7 +218,7 @@ export default function Home() {
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           <path
@@ -229,7 +229,7 @@ export default function Home() {
       </motion.div>
 
       {/* Beautiful Balloons Layer */}
-      <motion.div 
+      <motion.div
         className="fixed inset-0 pointer-events-none"
         style={{ y: layer2Y }}
       >
@@ -242,7 +242,7 @@ export default function Home() {
           transition={{
             duration: 6,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           <div className="w-12 h-16 bg-pink-300 rounded-full relative">
@@ -259,7 +259,7 @@ export default function Home() {
           transition={{
             duration: 7,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           <div className="w-14 h-18 bg-purple-300 rounded-full relative">
@@ -269,7 +269,7 @@ export default function Home() {
       </motion.div>
 
       {/* Ambient Gradient Orbs */}
-      <motion.div 
+      <motion.div
         className="fixed inset-0 pointer-events-none"
         style={{ y: layer3Y }}
       >
@@ -277,18 +277,18 @@ export default function Home() {
         <div className="absolute bottom-[35%] right-[25%] w-40 h-40 bg-gradient-to-r from-purple-200/20 to-pink-200/20 rounded-full blur-xl animate-pulse" />
       </motion.div>
 
-      {/* Floating Hearts Layer */}
-      <motion.div 
+      {/* Floating Hearts Layer - Enhanced */}
+      <motion.div
         className="fixed inset-0 pointer-events-none"
         style={{ y: layer4Y }}
       >
-        {[...Array(5)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute"
             style={{
-              top: `${20 + i * 15}%`,
-              left: `${10 + i * 20}%`,
+              top: `${Math.random() * 80}%`,
+              left: `${Math.random() * 90}%`,
             }}
             animate={{
               y: [0, -15, 0],
@@ -296,12 +296,17 @@ export default function Home() {
               rotate: [0, 10, 0],
             }}
             transition={{
-              duration: 4 + i,
+              duration: 3 + Math.random() * 3,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           >
-            <svg className="w-6 h-6 text-pink-400/40" viewBox="0 0 24 24">
+            <svg
+              className={`w-${Math.floor(Math.random() * 3) + 4} h-${
+                Math.floor(Math.random() * 3) + 4
+              } text-pink-400/${Math.floor(Math.random() * 30) + 20}`}
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="currentColor"
                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -312,7 +317,7 @@ export default function Home() {
       </motion.div>
 
       {/* Glowing Background Circles */}
-      <motion.div 
+      <motion.div
         className="fixed inset-0 pointer-events-none"
         style={{ y: layer5Y }}
       >
@@ -340,7 +345,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           className="text-4xl md:text-6xl text-pink-600 font-bold text-center relative"
           style={{
-            textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
+            textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
           }}
         >
           <motion.div
@@ -358,7 +363,7 @@ export default function Home() {
             transition={{
               duration: 4,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
         </motion.div>
@@ -367,9 +372,9 @@ export default function Home() {
       {/* Romantic Quote Section - Reduced height */}
       <section className="h-[70vh] flex items-center justify-center relative overflow-hidden">
         <motion.div
-          style={{ 
+          style={{
             rotateX: useTransform(scrollYProgress, [0.2, 0.4], [20, 0]),
-            scale: useTransform(scrollYProgress, [0.2, 0.4], [0.8, 1])
+            scale: useTransform(scrollYProgress, [0.2, 0.4], [0.8, 1]),
           }}
           className="text-center relative"
         >
@@ -379,7 +384,8 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="text-2xl md:text-3xl text-purple-500 font-serif italic mb-4"
           >
-            "Every moment with you feels like a beautiful dream... 💫"
+            &ldquo;Every moment with you feels like a beautiful dream...
+            💫&rdquo;
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -395,9 +401,9 @@ export default function Home() {
       {/* Second Section - Reduced height */}
       <section className="h-[70vh] flex items-center justify-center relative overflow-hidden">
         <motion.div
-          style={{ 
+          style={{
             y: layer2Y,
-            scale: useTransform(scrollYProgress, [0.4, 0.6], [0.8, 1.2]) 
+            scale: useTransform(scrollYProgress, [0.4, 0.6], [0.8, 1.2]),
           }}
           className="absolute inset-0 flex items-center justify-center"
         >
@@ -427,7 +433,7 @@ export default function Home() {
             transition={{
               duration: 3,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
         </motion.div>
@@ -436,18 +442,18 @@ export default function Home() {
       {/* Interactive Buttons Section - Adjusted height */}
       <section className="h-[90vh] flex flex-col items-center justify-center gap-6 relative overflow-hidden">
         <motion.div
-          style={{ 
+          style={{
             x: useTransform(scrollYProgress, [0.6, 0.8], [-100, 100]),
-            opacity: useTransform(scrollYProgress, [0.6, 0.8], [0.2, 0.8])
+            opacity: useTransform(scrollYProgress, [0.6, 0.8], [0.2, 0.8]),
           }}
           className="absolute left-0 top-1/4 text-6xl"
         >
           🌟
         </motion.div>
         <motion.div
-          style={{ 
+          style={{
             x: useTransform(scrollYProgress, [0.6, 0.8], [100, -100]),
-            opacity: useTransform(scrollYProgress, [0.6, 0.8], [0.2, 0.8])
+            opacity: useTransform(scrollYProgress, [0.6, 0.8], [0.2, 0.8]),
           }}
           className="absolute right-0 bottom-1/4 text-6xl"
         >
@@ -493,11 +499,11 @@ export default function Home() {
       {/* Enhanced Reminder Section - Adjusted height */}
       <section className="h-[80vh] flex items-center justify-center relative overflow-hidden">
         <motion.div
-          style={{ 
+          style={{
             y: layer3Y,
             rotateX: useTransform(scrollYProgress, [0.8, 1], [20, 0]),
             rotateY: useTransform(scrollYProgress, [0.8, 1], [-20, 0]),
-            scale: useTransform(scrollYProgress, [0.8, 1], [0.8, 1])
+            scale: useTransform(scrollYProgress, [0.8, 1], [0.8, 1]),
           }}
           className="absolute inset-0 flex items-center justify-center"
         >
@@ -510,23 +516,23 @@ export default function Home() {
           className="p-8 bg-white/30 backdrop-blur-sm rounded-xl shadow-xl hover:shadow-2xl transition-all"
           whileHover={{
             scale: 1.05,
-            boxShadow: "0px 0px 20px rgba(255,182,193,0.5)"
+            boxShadow: "0px 0px 20px rgba(255,182,193,0.5)",
           }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl text-purple-600 font-bold mb-4"
             animate={{
               textShadow: [
                 "0px 0px 4px rgba(218,112,214,0.3)",
                 "0px 0px 8px rgba(218,112,214,0.6)",
-                "0px 0px 4px rgba(218,112,214,0.3)"
-              ]
+                "0px 0px 4px rgba(218,112,214,0.3)",
+              ],
             }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Remember our trip promise! 🌟
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-lg text-pink-600 mb-4"
             animate={{ scale: [1, 1.02, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -539,9 +545,85 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Because every moment spent with you is an adventure worth taking... 💕
+            Because every moment spent with you is an adventure worth taking...
+            💕
           </motion.p>
         </motion.div>
+      </section>
+
+      {/* Add new Floating Envelopes Section */}
+      <section className="min-h-screen py-20 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          "You make my heart skip a beat! 💓",
+          "Every moment with you is magical ✨",
+          "Your smile brightens up my day! 🌟",
+          "You're the sweetest person I know 🍬",
+          "Just thinking about you makes me smile 😊",
+          "You're my favorite person in the world! 🌎",
+        ].map((message, index) => (
+          <motion.div
+            key={index}
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+          >
+            <motion.div
+              className="w-64 h-48 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg shadow-lg cursor-pointer relative overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const element = document.getElementById(`message-${index}`);
+                if (element) {
+                  element.style.display =
+                    element.style.display === "none" ? "block" : "none";
+                }
+              }}
+            >
+              {/* Envelope Front */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-pink-200 to-purple-200 rounded-lg shadow-inner"
+                whileHover={{ scale: 1.1, rotateX: 180 }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-4xl">💌</span>
+                </div>
+              </motion.div>
+
+              {/* Message Content */}
+              <motion.div
+                id={`message-${index}`}
+                className="absolute inset-0 bg-white/90 backdrop-blur-sm p-4 flex flex-col items-center justify-center"
+                initial={{ display: "none" }}
+                animate={{
+                  scale: [0.8, 1],
+                  opacity: [0, 1],
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.p
+                  className="text-lg text-pink-600 font-medium text-center mb-4"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  {message}
+                </motion.p>
+                <motion.p
+                  className="text-sm text-purple-500 italic"
+                  animate={{
+                    y: [0, -2, 0],
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  - Harshit
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        ))}
       </section>
     </main>
   );
